@@ -1,0 +1,48 @@
+Clase
+  personalizada
+  para
+  ajustar
+  el
+  ancho
+  y
+  centrar
+  la
+  barra
+  de
+  navegación
+  .navbar {
+  width: 90%; /* Ajusta el ancho al 90% */
+  margin: 0 auto; /* Centra la barra de navegación */
+}
+
+/* Asegurarse de que los elementos dentro del navbar se alineen correctamente */
+.navbar-nav {
+  display: flex;
+  justify-content: space-around; /* Distribuye los elementos del menú */
+  align-items: center;
+}
+
+/* Alinear el CartWidget a la derecha */
+.d-flex {
+  margin-left: auto;
+}
+
+/* Mejorar el espaciado del dropdown */
+.navbar .dropdown-menu {
+  min-width: 200px; /* Ancho mínimo para el dropdown */
+}
+
+.dropdown-divider {
+  margin: 0.5rem 0;
+}
+
+/* Para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .navbar {
+    width: 100%; /* En pantallas pequeñas, ocupa el 100% del ancho */
+  }
+
+  .navbar-nav {
+    flex-direction: column; /* Cambiar la dirección de los ítems a columna en móviles */
+  }
+}

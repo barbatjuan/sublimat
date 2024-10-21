@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
+import logo from "../../assets/logo.svg";
 
 const CartWidget = () => {
   return (
-    <div>
-      
-    </div>
-  )
-}
+    <a className="nav-link" href="">
+      <img src={logo} alt="" />1
+    </a>
+  );
+};
 
-export default CartWidget
+export default CartWidget;
