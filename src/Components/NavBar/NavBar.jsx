@@ -7,13 +7,11 @@ const NavBar = () => {
     <nav className="navbar navbar-expand-lg bg-body-custom">
       <div className="container-fluid">
         <a className="navbar-brand" href="#">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+          <div className="container-fluid">
+            <a className="navbar-brand" href="#">
               <img
                 src="/src/assets/sublimate-mini.png"
                 alt="Logo"
-                width="150"
-                height="auto"
                 class="d-inline-block align-text-top"
               />
             </a>

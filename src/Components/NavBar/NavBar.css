@@ -5,6 +5,11 @@
   padding-right: 100px;
 }
 
+.navbar-brand img {
+  width: 180px;
+  height: auto;
+}
+
 .navbar-nav {
   width: 100%;
   display: flex;
@@ -27,6 +32,11 @@
 @media (max-width: 768px) {
   .navbar {
     width: 100%;
+    padding: 20px 20px 20px 20px;
+  }
+
+  .navbar-brand img {
+    width: 130px;
   }
 
   .navbar-nav {
@@ -51,4 +61,8 @@
   color: #0a0a0a;
   background-color: transparent;
   letter-spacing: 2px;
+}
+
+.navbar-toggler {
+  background-color: #c99e67;
 }
