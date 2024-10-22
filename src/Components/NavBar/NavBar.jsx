@@ -4,10 +4,20 @@ import "./NavBar.css";
 
 const NavBar = () => {
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
+    <nav className="navbar navbar-expand-lg bg-body-custom">
       <div className="container-fluid">
         <a className="navbar-brand" href="#">
-          Navbar
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+              <img
+                src="/src/assets/sublimate-mini.png"
+                alt="Logo"
+                width="150"
+                height="auto"
+                class="d-inline-block align-text-top"
+              />
+            </a>
+          </div>
         </a>
         <button
           className="navbar-toggler"
@@ -20,17 +30,22 @@ const NavBar = () => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
+
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
+              <a
+                className="nav-link-custom active"
+                aria-current="page"
+                href="#"
+              >
                 Inicio
               </a>
             </li>
 
             <li className="nav-item dropdown">
               <a
-                className="nav-link dropdown-toggle"
+                className="nav-link-custom dropdown-toggle"
                 href="#"
                 role="button"
                 data-bs-toggle="dropdown"
@@ -55,17 +70,19 @@ const NavBar = () => {
               </ul>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <a className="nav-link-custom" href="#">
                 Contacto
               </a>
             </li>
-            <ul className="navbar-nav ms-auto">
-              <li className="nav-item">
-                <CartWidget />
-              </li>
-            </ul>
           </ul>
         </div>
+        <span class="navbar-text">
+          <ul className="navbar-nav ms-auto">
+            <li className="nav-item">
+              <CartWidget />
+            </li>
+          </ul>
+        </span>
       </div>
     </nav>
   );

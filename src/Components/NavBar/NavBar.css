@@ -1,48 +1,54 @@
-Clase
-  personalizada
-  para
-  ajustar
-  el
-  ancho
-  y
-  centrar
-  la
-  barra
-  de
-  navegación
-  .navbar {
-  width: 90%; /* Ajusta el ancho al 90% */
-  margin: 0 auto; /* Centra la barra de navegación */
+.navbar {
+  width: 90%;
+  margin: 0 auto;
+  padding-left: 100px;
+  padding-right: 100px;
 }
 
-/* Asegurarse de que los elementos dentro del navbar se alineen correctamente */
 .navbar-nav {
+  width: 100%;
   display: flex;
-  justify-content: space-around; /* Distribuye los elementos del menú */
+  justify-content: flex-start;
   align-items: center;
 }
 
-/* Alinear el CartWidget a la derecha */
 .d-flex {
   margin-left: auto;
 }
 
-/* Mejorar el espaciado del dropdown */
 .navbar .dropdown-menu {
-  min-width: 200px; /* Ancho mínimo para el dropdown */
+  min-width: 200px;
 }
 
 .dropdown-divider {
   margin: 0.5rem 0;
 }
 
-/* Para pantallas más pequeñas */
 @media (max-width: 768px) {
   .navbar {
-    width: 100%; /* En pantallas pequeñas, ocupa el 100% del ancho */
+    width: 100%;
   }
 
   .navbar-nav {
-    flex-direction: column; /* Cambiar la dirección de los ítems a columna en móviles */
+    flex-direction: column;
   }
+}
+
+.nav-link-custom {
+  color: #c99e67;
+  text-decoration: none;
+  margin: 0 20px 0 20px;
+}
+
+.dropdown-menu {
+  background-color: #c99e67;
+}
+
+.dropdown-item {
+  transition-duration: 1000ms;
+}
+.dropdown-item:hover {
+  color: #0a0a0a;
+  background-color: transparent;
+  letter-spacing: 2px;
 }
