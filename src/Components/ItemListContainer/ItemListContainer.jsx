@@ -1,5 +1,8 @@
-// const ItemListContainer = () => {
-//   return <div>ItemListContainer</div>;
-// };
+import "./ItemListContainer.css";
+import React from "react";
 
-// export default ItemListContainer;
+function ItemListContainer(props) {
+  return <h2>{props.greeting}</h2>;
+}
+
+export default ItemListContainer;
