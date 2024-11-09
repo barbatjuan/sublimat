@@ -1,28 +1,26 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { fetchProductos } from "./../../asyncMock";
 import "./ItemListContainer.css";
 
 const ItemListContainer = () => {
   const [productos, setProductos] = useState([]);
-  const { id } = useParams(); // Captura el parámetro 'id' de la ruta
+  const { id } = useParams();
 
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchProductos();
       if (id) {
-        // Filtra los productos por categoría
         const filteredProducts = data.filter(
           (producto) => producto.category === id
         );
         setProductos(filteredProducts);
       } else {
-        // Si no hay categoría, muestra todos los productos
         setProductos(data);
       }
     };
     fetchData();
-  }, [id]); // Se ejecuta nuevamente si 'id' cambia (cuando se selecciona una categoría)
+  }, [id]);
 
   return (
     <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -45,9 +43,18 @@ const ItemListContainer = () => {
               <span className="text-gray-900 font-semibold">
                 ${producto.price}
               </span>
-              <button className="btn-add  text-white py-2 px-4 rounded ">
-                Agregar
-              </button>
+              <div className="flex gap-2">
+                <button className="btn-add text-white py-2 px-4 rounded">
+                  Agregar
+                </button>
+
+                <Link
+                  to={`/item/${producto.id}`}
+                  className="btn-add text-white py-2 px-4 rounded "
+                >
+                  Ver detalles
+                </Link>
+              </div>
             </div>
           </div>
         </div>
