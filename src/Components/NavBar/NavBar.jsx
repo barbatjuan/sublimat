@@ -1,10 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CartWidget from "../CartWidget/CartWidget";
 import "./NavBar.css";
 import Prueba from "../Prueba/Prueba";
 import { Link } from "react-router-dom";
+import { fetchProductos } from "../path/../../asyncMock";
 
 const NavBar = () => {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const productos = await fetchProductos();
+      const uniqueCategories = [
+        ...new Set(productos.map((producto) => producto.category)),
+      ];
+      setCategories(uniqueCategories);
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <nav className="bg-zinc-800">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -18,7 +33,6 @@ const NavBar = () => {
             >
               <span className="absolute -inset-0.5"></span>
               <span className="sr-only">Open main menu</span>
-
               <svg
                 className="block h-6 w-6"
                 fill="none"
@@ -34,7 +48,6 @@ const NavBar = () => {
                   d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
                 />
               </svg>
-
               <svg
                 className="hidden h-6 w-6"
                 fill="none"
@@ -62,31 +75,22 @@ const NavBar = () => {
             </div>
             <div className="hidden sm:ml-6 sm:block">
               <div className="flex space-x-4">
-                <a
-                  href="#"
+                <Link
+                  to="/"
                   className="rounded-md bg-zinc-900 px-3 py-2 text-sm font-medium text-amber-400 hover:text-amber-200"
                   aria-current="page"
                 >
-                  Dashboard
-                </a>
-                <a
-                  href="#"
-                  className="rounded-md px-3 py-2 text-sm font-medium text-amber-400 hover:bg-zinc-700 hover:text-amber-200"
-                >
-                  Team
-                </a>
-                <a
-                  href="#"
-                  className="rounded-md px-3 py-2 text-sm font-medium text-amber-400 hover:bg-zinc-700 hover:text-amber-200"
-                >
-                  Projects
-                </a>
-                <a
-                  href="#"
-                  className="rounded-md px-3 py-2 text-sm font-medium text-amber-400 hover:bg-zinc-700 hover:text-amber-200"
-                >
-                  Calendar
-                </a>
+                  Home
+                </Link>
+                {categories.map((category) => (
+                  <Link
+                    key={category}
+                    to={`/category/${category}`}
+                    className="rounded-md px-3 py-2 text-sm font-medium text-amber-400 hover:bg-zinc-700 hover:text-amber-200"
+                  >
+                    {category}
+                  </Link>
+                ))}
               </div>
             </div>
           </div>
@@ -106,31 +110,31 @@ const NavBar = () => {
       </div>
       <div className="sm:hidden" id="mobile-menu">
         <div className="space-y-1 px-2 pb-3 pt-2">
-          <a
-            href="#"
+          <Link
+            to="/"
             className="block rounded-md bg-zinc-900 px-3 py-2 text-base font-medium text-white"
             aria-current="page"
           >
             Inicio
-          </a>
-          <a
-            href="#"
+          </Link>
+          <Link
+            to="/quienes-somos"
             className="block rounded-md px-3 py-2 text-base font-medium text-amber-300 hover:bg-zinc-700 hover:text-white"
           >
             Quienes Somos
-          </a>
-          <a
-            href="#"
+          </Link>
+          <Link
+            to="/tienda"
             className="block rounded-md px-3 py-2 text-base font-medium text-amber-300 hover:bg-zinc-700 hover:text-white"
           >
             Tienda
-          </a>
-          <a
-            href="#"
+          </Link>
+          <Link
+            to="/contacto"
             className="block rounded-md px-3 py-2 text-base font-medium text-amber-300 hover:bg-zinc-700 hover:text-white"
           >
             Contacto
-          </a>
+          </Link>
         </div>
       </div>
     </nav>

@@ -19,8 +19,8 @@ const asyncMock = [
     },
     {
         id: 3,
-        name: "Taza de Fútbol - Peñarol",
-        category: "Fútbol",
+        name: "Taza de Futbol - Peñarol",
+        category: "Futbol",
         price: 300,
         img: "https://www.sublimat.uy/wp-content/uploads/2024/10/2-Penarol.jpg",
         stock: 10,
@@ -28,8 +28,8 @@ const asyncMock = [
     },
     {
         id: 4,
-        name: "Taza de Fútbol - Chacarita",
-        category: "Fútbol",
+        name: "Taza de Futbol - Chacarita",
+        category: "Futbol",
         price: 300,
         img: "https://www.sublimat.uy/wp-content/uploads/2024/10/2-Barcelona-980x980.jpg",
         stock: 10,
@@ -37,17 +37,17 @@ const asyncMock = [
     },
     {
         id: 5,
-        name: "Taza Día de la Madre - Flores",
-        category: "Día de la Madre",
+        name: "Taza Halloween - Flores",
+        category: "Halloween",
         price: 300,
         img: "https://www.sublimat.uy/wp-content/uploads/2024/10/11-1-980x980.jpg",
         stock: 10,
-        description: "Taza sublimada con flores y mensaje para el Día de la Madre.",
+        description: "Taza sublimada con flores y mensaje para el Halloween.",
     },
     {
         id: 6,
-        name: "Taza Día de la Madre - Corazón",
-        category: "Día de la Madre",
+        name: "Taza Halloween - Corazón",
+        category: "Halloween",
         price: 300,
         img: "https://www.sublimat.uy/wp-content/uploads/2024/10/1-20-600x600.jpg",
         stock: 10,
@@ -73,8 +73,8 @@ const asyncMock = [
     },
     {
         id: 9,
-        name: "Taza de Amistad - Mejor Amigo",
-        category: "Amistad",
+        name: "Taza de Navidad - Mejor Amigo",
+        category: "Navidad",
         price: 300,
         img: "https://www.sublimat.uy/wp-content/uploads/2024/10/3-29-300x300.jpg",
         stock: 10,
@@ -82,8 +82,8 @@ const asyncMock = [
     },
     {
         id: 10,
-        name: "Taza de Amistad - Sonrisa",
-        category: "Amistad",
+        name: "Taza de Navidad - Sonrisa",
+        category: "Navidad",
         price: 300,
         img: "https://www.sublimat.uy/wp-content/uploads/2024/10/2-17-300x300.jpg",
         stock: 10,
@@ -91,17 +91,17 @@ const asyncMock = [
     },
     {
         id: 11,
-        name: "Taza de Cumpleaños - Globos",
-        category: "Cumpleaños",
+        name: "Taza de San Valentin - Globos",
+        category: "San Valentin",
         price: 300,
         img: "https://www.sublimat.uy/wp-content/uploads/2024/10/2-19-300x300.jpg",
         stock: 10,
-        description: "Taza sublimada con globos y mensajes de cumpleaños.",
+        description: "Taza sublimada con globos y mensajes de San Valentin.",
     },
     {
         id: 12,
-        name: "Taza de Cumpleaños - Pastel",
-        category: "Cumpleaños",
+        name: "Taza de San Valentin - Pastel",
+        category: "San Valentin",
         price: 300,
         img: "https://www.sublimat.uy/wp-content/uploads/2024/10/Aries-300x300.jpg",
         stock: 10,
@@ -109,8 +109,8 @@ const asyncMock = [
     },
     {
         id: 13,
-        name: "Taza de San Valentín - Corazones",
-        category: "San Valentín",
+        name: "Taza de San Valentin - Corazones",
+        category: "San Valentin",
         price: 300,
         img: "https://www.sublimat.uy/wp-content/uploads/2024/10/8-9-300x300.jpg",
         stock: 10,
@@ -118,8 +118,8 @@ const asyncMock = [
     },
     {
         id: 14,
-        name: "Taza de San Valentín - Amor Infinito",
-        category: "San Valentín",
+        name: "Taza de San Valentin - Amor Infinito",
+        category: "San Valentin",
         price: 300,
         img: "https://www.sublimat.uy/wp-content/uploads/2024/10/Volkswagen-2-300x300.jpg",
         stock: 10,
@@ -127,8 +127,8 @@ const asyncMock = [
     },
     {
         id: 15,
-        name: "Taza de Inspiración - Motivación",
-        category: "Inspiración",
+        name: "Taza de Animales - Motivación",
+        category: "Animales",
         price: 300,
         img: "https://www.sublimat.uy/wp-content/uploads/2024/10/3-22-300x300.jpg",
         stock: 10,
@@ -136,8 +136,8 @@ const asyncMock = [
     },
     {
         id: 16,
-        name: "Taza de Inspiración - Sueños",
-        category: "Inspiración",
+        name: "Taza de Animales - Sueños",
+        category: "Animales",
         price: 300,
         img: "https://www.sublimat.uy/wp-content/uploads/2024/10/Odontologo-300x300.jpg",
         stock: 10,
@@ -163,8 +163,8 @@ const asyncMock = [
     },
     {
         id: 19,
-        name: "Taza de Café - Mañana",
-        category: "Café",
+        name: "Taza de Futbol - Mañana",
+        category: "Futbol",
         price: 300,
         img: "https://www.sublimat.uy/wp-content/uploads/2024/10/Led-Zeppelin-1-300x300.jpg",
         stock: 10,
@@ -172,14 +172,17 @@ const asyncMock = [
     },
     {
         id: 20,
-        name: "Taza de Café - Café y Libros",
-        category: "Café",
+        name: "Taza de Futbol - Futbol y Libros",
+        category: "Futbol",
         price: 300,
         img: "https://www.sublimat.uy/wp-content/uploads/2024/10/12-Primo-980x980.jpg",
         stock: 10,
-        description: "Taza sublimada con frase para amantes del café y la lectura.",
+        description: "Taza sublimada con frase para amantes del Futbol y la lectura.",
     },
 ];
+
+export const uniqueCategories = [...new Set(asyncMock.map((producto) => producto.category))];
+
 
 export const fetchProductos = async () => {
     return new Promise((resolve) => {

@@ -1,17 +1,28 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { fetchProductos } from "./../../asyncMock";
 import "./ItemListContainer.css";
 
 const ItemListContainer = () => {
-  const [productos, setProductos] = React.useState([]);
+  const [productos, setProductos] = useState([]);
+  const { id } = useParams(); // Captura el parámetro 'id' de la ruta
 
-  React.useEffect(() => {
+  useEffect(() => {
     const fetchData = async () => {
       const data = await fetchProductos();
-      setProductos(data);
+      if (id) {
+        // Filtra los productos por categoría
+        const filteredProducts = data.filter(
+          (producto) => producto.category === id
+        );
+        setProductos(filteredProducts);
+      } else {
+        // Si no hay categoría, muestra todos los productos
+        setProductos(data);
+      }
     };
     fetchData();
-  }, []);
+  }, [id]); // Se ejecuta nuevamente si 'id' cambia (cuando se selecciona una categoría)
 
   return (
     <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
