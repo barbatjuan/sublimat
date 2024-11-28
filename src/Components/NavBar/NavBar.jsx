@@ -1,77 +1,46 @@
 import React, { useEffect, useState } from "react";
-import CartWidget from "../CartWidget/CartWidget";
-import "./NavBar.css";
-import Prueba from "../Prueba/Prueba";
 import { Link } from "react-router-dom";
-import { fetchProductos } from "../path/../../asyncMock";
+import CartWidget from "../CartWidget/CartWidget";
+import Prueba from "../Prueba/Prueba";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../services/firebase"; // Asegúrate de que la ruta sea correcta
+import "./NavBar.css";
 
 const NavBar = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const productos = await fetchProductos();
-      const uniqueCategories = [
-        ...new Set(productos.map((producto) => producto.category)),
-      ];
-      setCategories(uniqueCategories);
+    const fetchCategories = async () => {
+      try {
+        const productsSnapshot = await getDocs(collection(db, "products"));
+        const products = productsSnapshot.docs.map((doc) => doc.data());
+
+        // Extraer categorías únicas
+        const uniqueCategories = [
+          ...new Set(products.map((producto) => producto.category)),
+        ];
+        setCategories(uniqueCategories);
+      } catch (error) {
+        console.error("Error al cargar las categorías:", error);
+      }
     };
 
-    fetchData();
+    fetchCategories();
   }, []);
 
   return (
     <nav className="bg-zinc-800">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
-          <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-            <button
-              type="button"
-              className="relative inline-flex items-center justify-center rounded-md p-2 text-amber-200 hover:bg-zinc-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-              aria-controls="mobile-menu"
-              aria-expanded="false"
-            >
-              <span className="absolute -inset-0.5"></span>
-              <span className="sr-only">Open main menu</span>
-              <svg
-                className="block h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="currentColor"
-                aria-hidden="true"
-                data-slot="icon"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                />
-              </svg>
-              <svg
-                className="hidden h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="currentColor"
-                aria-hidden="true"
-                data-slot="icon"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M6 18 18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
-          </div>
           <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
             <div className="flex flex-shrink-0 items-center">
-              <img
-                className="h-8 w-auto"
-                src="/src/assets/sublimate-mini.png"
-                alt="Logo Sublimat"
-              />
+              <Link to="/">
+                <img
+                  className="h-8 w-auto"
+                  src="/src/assets/sublimate-mini.png"
+                  alt="Logo Sublimat"
+                />
+              </Link>
             </div>
             <div className="hidden sm:ml-6 sm:block">
               <div className="flex space-x-4">
@@ -88,19 +57,13 @@ const NavBar = () => {
                     to={`/category/${category}`}
                     className="rounded-md px-3 py-2 text-sm font-medium text-amber-400 hover:bg-zinc-700 hover:text-amber-200"
                   >
-                    {category}
+                    {category.charAt(0).toUpperCase() + category.slice(1)}
                   </Link>
                 ))}
               </div>
             </div>
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-            <button
-              type="button"
-              className="relative rounded-full bg-zinc-800 p-1 text-amber-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-zinc-800"
-            >
-              <span className="absolute -inset-1.5"></span>
-            </button>
             <CartWidget />
             <div>
               <Prueba />
@@ -117,24 +80,15 @@ const NavBar = () => {
           >
             Inicio
           </Link>
-          <Link
-            to="/quienes-somos"
-            className="block rounded-md px-3 py-2 text-base font-medium text-amber-300 hover:bg-zinc-700 hover:text-white"
-          >
-            Quienes Somos
-          </Link>
-          <Link
-            to="/tienda"
-            className="block rounded-md px-3 py-2 text-base font-medium text-amber-300 hover:bg-zinc-700 hover:text-white"
-          >
-            Tienda
-          </Link>
-          <Link
-            to="/contacto"
-            className="block rounded-md px-3 py-2 text-base font-medium text-amber-300 hover:bg-zinc-700 hover:text-white"
-          >
-            Contacto
-          </Link>
+          {categories.map((category) => (
+            <Link
+              key={category}
+              to={`/category/${category}`}
+              className="block rounded-md px-3 py-2 text-base font-medium text-amber-300 hover:bg-zinc-700 hover:text-white"
+            >
+              {category.charAt(0).toUpperCase() + category.slice(1)}
+            </Link>
+          ))}
         </div>
       </div>
     </nav>

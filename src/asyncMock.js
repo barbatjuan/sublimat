@@ -52,7 +52,7 @@ const asyncMock = [
         img: "https://www.sublimat.uy/wp-content/uploads/2024/10/1-20-600x600.jpg",
         stock: 10,
         description: "Taza sublimada con un corazón y frase especial para mamá.",
-    },
+    },///////
     {
         id: 7,
         name: "Taza de Navidad - Santa Claus",
@@ -61,7 +61,7 @@ const asyncMock = [
         img: "https://www.sublimat.uy/wp-content/uploads/2024/10/2-31-980x980.jpg",
         stock: 10,
         description: "Taza sublimada con un diseño navideño de Santa Claus.",
-    },
+    },///////////////
     {
         id: 8,
         name: "Taza de Navidad - Renos",
@@ -70,7 +70,7 @@ const asyncMock = [
         img: "https://www.sublimat.uy/wp-content/uploads/2024/10/2-31-980x980.jpg",
         stock: 10,
         description: "Taza sublimada con renos y copos de nieve.",
-    },
+    },/////
     {
         id: 9,
         name: "Taza de Navidad - Mejor Amigo",
@@ -79,7 +79,7 @@ const asyncMock = [
         img: "https://www.sublimat.uy/wp-content/uploads/2024/10/3-29-300x300.jpg",
         stock: 10,
         description: "Taza sublimada con mensaje para el mejor amigo.",
-    },
+    },/////
     {
         id: 10,
         name: "Taza de Navidad - Sonrisa",
@@ -88,7 +88,7 @@ const asyncMock = [
         img: "https://www.sublimat.uy/wp-content/uploads/2024/10/2-17-300x300.jpg",
         stock: 10,
         description: "Taza sublimada con diseño de sonrisa y frases amigables.",
-    },
+    },///////////
     {
         id: 11,
         name: "Taza de San Valentin - Globos",
@@ -97,7 +97,7 @@ const asyncMock = [
         img: "https://www.sublimat.uy/wp-content/uploads/2024/10/2-19-300x300.jpg",
         stock: 10,
         description: "Taza sublimada con globos y mensajes de San Valentin.",
-    },
+    },////////////////
     {
         id: 12,
         name: "Taza de San Valentin - Pastel",
@@ -106,7 +106,7 @@ const asyncMock = [
         img: "https://www.sublimat.uy/wp-content/uploads/2024/10/Aries-300x300.jpg",
         stock: 10,
         description: "Taza sublimada con diseño de pastel y velas.",
-    },
+    },/////////////
     {
         id: 13,
         name: "Taza de San Valentin - Corazones",
@@ -115,7 +115,7 @@ const asyncMock = [
         img: "https://www.sublimat.uy/wp-content/uploads/2024/10/8-9-300x300.jpg",
         stock: 10,
         description: "Taza sublimada con corazones y mensaje de amor.",
-    },
+    },////////////
     {
         id: 14,
         name: "Taza de San Valentin - Amor Infinito",
@@ -124,7 +124,7 @@ const asyncMock = [
         img: "https://www.sublimat.uy/wp-content/uploads/2024/10/Volkswagen-2-300x300.jpg",
         stock: 10,
         description: "Taza sublimada con símbolo de infinito y frase romántica.",
-    },
+    },///////////////
     {
         id: 15,
         name: "Taza de Animales - Motivación",
@@ -133,7 +133,7 @@ const asyncMock = [
         img: "https://www.sublimat.uy/wp-content/uploads/2024/10/3-22-300x300.jpg",
         stock: 10,
         description: "Taza sublimada con frase motivacional.",
-    },
+    },//////////////
     {
         id: 16,
         name: "Taza de Animales - Sueños",
@@ -142,7 +142,7 @@ const asyncMock = [
         img: "https://www.sublimat.uy/wp-content/uploads/2024/10/Odontologo-300x300.jpg",
         stock: 10,
         description: "Taza sublimada con frases sobre alcanzar los sueños.",
-    },
+    },////////
     {
         id: 17,
         name: "Taza de Animales - Gato",
@@ -151,7 +151,7 @@ const asyncMock = [
         img: "https://www.sublimat.uy/wp-content/uploads/2024/10/Programador-300x300.jpg",
         stock: 10,
         description: "Taza sublimada con diseño de un gato adorable.",
-    },
+    },///////////////
     {
         id: 18,
         name: "Taza de Animales - Perro",
@@ -160,7 +160,7 @@ const asyncMock = [
         img: "https://www.sublimat.uy/wp-content/uploads/2024/10/4-24-300x300.jpg",
         stock: 10,
         description: "Taza sublimada con diseño de un perro amistoso.",
-    },
+    },/////////////
     {
         id: 19,
         name: "Taza de Futbol - Mañana",
