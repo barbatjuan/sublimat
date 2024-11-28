@@ -1,37 +1,51 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { fetchProductos } from "./../../asyncMock";
-import "./ItemDetail.css"; // Archivo de estilo independiente
+import { db } from "../../services/firebase";  
+import { doc, getDoc } from "firebase/firestore";
+import Loader from "../Loader/Loader";
+import "./ItemDetail.css"; 
 
 const ItemDetail = () => {
-  const { id } = useParams(); // Obtener el ID del producto desde la URL
-  const [producto, setProducto] = useState(null);
+  const { id } = useParams(); 
+  const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetchProductos();
-      const foundProduct = data.find((item) => item.id === parseInt(id));
-      setProducto(foundProduct);
+      try {
+        const docRef = doc(db, "products", id); 
+        const docSnap = await getDoc(docRef); 
+
+        if (docSnap.exists()) {
+          setProduct({ id: docSnap.id, ...docSnap.data() });
+        } else {
+          console.log("No such product!");
+        }
+      } catch (error) {
+        console.error("Error getting document:", error);
+      } finally {
+        setLoading(false); 
+      }
     };
     fetchData();
-  }, [id]);
+  }, [id]); 
 
-  if (!producto) {
-    return <div>Loading...</div>;
+  if (loading) {
+    return <Loader />; 
   }
 
   return (
     <div className="item-detail-container">
       <div className="item-detail">
         <img
-          src={producto.img}
-          alt={producto.name}
+          src={product.img}
+          alt={product.name}
           className="item-detail-img"
         />
         <div className="item-detail-info">
-          <h2 className="item-detail-title">{producto.name}</h2>
-          <p className="item-detail-description">{producto.description}</p>
-          <p className="item-detail-price">${producto.price}</p>
+          <h2 className="item-detail-title">{product.name}</h2>
+          <p className="item-detail-description">{product.description}</p>
+          <p className="item-detail-price">${product.price}</p>
           <button className="btn-add-detail text-white py-2 px-4 rounded ">
             Agregar al carrito
           </button>
