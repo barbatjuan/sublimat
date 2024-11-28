@@ -6,9 +6,10 @@ import Loader from "../Loader/Loader";
 import "./ItemDetail.css"; 
 
 const ItemDetail = () => {
-  const { id } = useParams(); 
+  const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true); 
+  const [quantity, setQuantity] = useState(1); 
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,7 +20,7 @@ const ItemDetail = () => {
         if (docSnap.exists()) {
           setProduct({ id: docSnap.id, ...docSnap.data() });
         } else {
-          console.log("No such product!");
+          console.log("No se encuentra el producto!");
         }
       } catch (error) {
         console.error("Error getting document:", error);
@@ -28,7 +29,20 @@ const ItemDetail = () => {
       }
     };
     fetchData();
-  }, [id]); 
+  }, [id]);
+
+  const handleIncrement = () => {
+    if (quantity < product.stock) {
+      setQuantity(quantity + 1);
+    }
+  };
+
+  // Decrementar la cantidad
+  const handleDecrement = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
 
   if (loading) {
     return <Loader />; 
@@ -46,6 +60,27 @@ const ItemDetail = () => {
           <h2 className="item-detail-title">{product.name}</h2>
           <p className="item-detail-description">{product.description}</p>
           <p className="item-detail-price">${product.price}</p>
+          
+          <p className="item-detail-stock">Stock disponible: {product.stock}</p>
+          
+          <div className="item-detail-quantity">
+            <button
+              className="btn-quantity"
+              onClick={handleDecrement}
+              disabled={quantity <= 1}
+            >
+              -
+            </button>
+            <span className="quantity">{quantity}</span> 
+            <button
+              className="btn-quantity"
+              onClick={handleIncrement}
+              disabled={quantity >= product.stock} 
+            >
+              +
+            </button>
+          </div>
+
           <button className="btn-add-detail text-white py-2 px-4 rounded ">
             Agregar al carrito
           </button>

@@ -59,3 +59,35 @@
   background-color: #b67c0f;
   color: #333;
 }
+
+
+.item-detail-quantity {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.btn-quantity {
+  background-color: #323232;
+  border: 1px solid #ccc;
+  padding: 5px 15px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.quantity {
+  margin: 0 10px;
+  font-size: 18px;
+  color: #454545;
+}
+
+.btn-quantity:disabled {
+  background-color: #dcdcdc;
+  cursor: not-allowed;
+}
+
+.item-detail-stock {
+  font-size: 14px;
+  color: gray;
+  margin-top: 10px;
+}

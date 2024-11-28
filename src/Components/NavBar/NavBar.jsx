@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import CartWidget from "../CartWidget/CartWidget";
 import Prueba from "../Prueba/Prueba";
 import { collection, getDocs } from "firebase/firestore";
-import { db } from "../../services/firebase"; // Asegúrate de que la ruta sea correcta
+import { db } from "../../services/firebase";
 import "./NavBar.css";
 
 const NavBar = () => {
@@ -14,19 +14,20 @@ const NavBar = () => {
       try {
         const productsSnapshot = await getDocs(collection(db, "products"));
         const products = productsSnapshot.docs.map((doc) => doc.data());
-
-        // Extraer categorías únicas
-        const uniqueCategories = [
-          ...new Set(products.map((producto) => producto.category)),
-        ];
+  
+        // Filtrar categorías únicas usando Set
+        const uniqueCategories = Array.from(
+          new Set(products.map((producto) => producto.category))
+        );
         setCategories(uniqueCategories);
       } catch (error) {
         console.error("Error al cargar las categorías:", error);
       }
     };
-
+  
     fetchCategories();
   }, []);
+  
 
   return (
     <nav className="bg-zinc-800">
