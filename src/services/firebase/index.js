@@ -1,19 +1,14 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_APIKEY,
-  authDomain: import.meta.VITE_AUTHDOMAIN,
-  projectId: import.meta.VITE_PROJECTID,
-  storageBucket: import.meta.VITE_STORAGEBUCKET,
-  messagingSenderId: import.meta.VITE_MESSAGINGSENDERID,
-  appId: import.meta.VITE_APPIDE,
+  authDomain: import.meta.env.VITE_AUTHDOMAIN,
+  projectId: "sublimat-coder",
+  storageBucket: "sublimat-coder.firebasestorage.app",
+  messagingSenderId: "1046006141435",
+  appId: "1:1046006141435:web:534beb5779d01a6354fb5e"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore (app);

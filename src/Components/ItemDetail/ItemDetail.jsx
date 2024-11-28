@@ -34,7 +34,7 @@ const ItemDetail = () => {
   }, [id]);
 
   const handleIncrement = () => {
-    if (quantity < product.stock) {
+    if (quantity < product?.stock) {
       setQuantity(quantity + 1);
     }
   };
@@ -46,11 +46,19 @@ const ItemDetail = () => {
   };
 
   const handleAddToCart = () => {
-    addToCart(product, quantity); // Llamamos a la función para agregar al carrito
+    if (product && product.stock >= quantity) {
+      addToCart(product, quantity); // Llamamos a la función para agregar al carrito
+    } else {
+      console.log("No hay suficiente stock para este producto.");
+    }
   };
 
   if (loading) {
     return <Loader />; 
+  }
+
+  if (!product) {
+    return <p>Producto no encontrado.</p>;
   }
 
   return (

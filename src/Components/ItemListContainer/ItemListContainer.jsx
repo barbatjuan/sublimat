@@ -61,9 +61,6 @@ const ItemListContainer = () => {
                   ${product.price}
                 </span>
                 <div className="flex gap-2">
-                  <button className="btn-add text-white py-2 px-4 rounded">
-                    Agregar
-                  </button>
 
                   <Link
                     to={`/item/${product.id}`}
