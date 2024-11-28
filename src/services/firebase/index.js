@@ -6,12 +6,12 @@ import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDG61dNg-aANtzaDyixREF0cudE9COj7QM",
-  authDomain: "sublimat-coder.firebaseapp.com",
-  projectId: "sublimat-coder",
-  storageBucket: "sublimat-coder.firebasestorage.app",
-  messagingSenderId: "1046006141435",
-  appId: "1:1046006141435:web:534beb5779d01a6354fb5e"
+  apiKey: import.meta.env.VITE_APIKEY,
+  authDomain: import.meta.VITE_AUTHDOMAIN,
+  projectId: import.meta.VITE_PROJECTID,
+  storageBucket: import.meta.VITE_STORAGEBUCKET,
+  messagingSenderId: import.meta.VITE_MESSAGINGSENDERID,
+  appId: import.meta.VITE_APPIDE,
 };
 
 // Initialize Firebase

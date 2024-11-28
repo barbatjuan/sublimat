@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { db } from "../../services/firebase";  
 import { doc, getDoc } from "firebase/firestore";
+import { useCart } from "../../context/CartContext"; // Importamos el contexto
 import Loader from "../Loader/Loader";
 import "./ItemDetail.css"; 
 
@@ -10,6 +11,7 @@ const ItemDetail = () => {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true); 
   const [quantity, setQuantity] = useState(1); 
+  const { addToCart } = useCart(); // Obtenemos la función para agregar al carrito
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,11 +39,14 @@ const ItemDetail = () => {
     }
   };
 
-  // Decrementar la cantidad
   const handleDecrement = () => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
     }
+  };
+
+  const handleAddToCart = () => {
+    addToCart(product, quantity); // Llamamos a la función para agregar al carrito
   };
 
   if (loading) {
@@ -81,7 +86,10 @@ const ItemDetail = () => {
             </button>
           </div>
 
-          <button className="btn-add-detail text-white py-2 px-4 rounded ">
+          <button 
+            className="btn-add-detail text-white py-2 px-4 rounded"
+            onClick={handleAddToCart} // Agregamos el evento al botón
+          >
             Agregar al carrito
           </button>
         </div>

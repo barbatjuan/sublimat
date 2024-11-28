@@ -4,17 +4,20 @@ import NavBar from "./Components/NavBar/NavBar";
 import "./styles.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ItemDetail from "./Components/ItemDetail/ItemDetail";
+import { CartProvider } from "./context/CartContext";
 
 function App() {
   return (
-    <BrowserRouter>
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<ItemListContainer />} />
-        <Route path="/category/:id" element={<ItemListContainer />} />
-        <Route path="/item/:id" element={<ItemDetail />} />
-      </Routes>
-    </BrowserRouter>
+    <CartProvider>
+      <BrowserRouter>
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<ItemListContainer />} />
+          <Route path="/category/:id" element={<ItemListContainer />} />
+          <Route path="/item/:id" element={<ItemDetail />} />
+        </Routes>
+      </BrowserRouter>
+    </CartProvider>
   );
 }
 

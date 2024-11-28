@@ -4,17 +4,22 @@ import CartWidget from "../CartWidget/CartWidget";
 import Prueba from "../Prueba/Prueba";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../services/firebase";
+import { useCart } from "../../context/CartContext"; // Importa el contexto
 import "./NavBar.css";
 
 const NavBar = () => {
   const [categories, setCategories] = useState([]);
+  const { cart } = useCart(); // Obtén el carrito desde el contexto
+
+  // Calcula la cantidad total de productos en el carrito
+  const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
 
   useEffect(() => {
     const fetchCategories = async () => {
       try {
         const productsSnapshot = await getDocs(collection(db, "products"));
         const products = productsSnapshot.docs.map((doc) => doc.data());
-  
+
         // Filtrar categorías únicas usando Set
         const uniqueCategories = Array.from(
           new Set(products.map((producto) => producto.category))
@@ -24,10 +29,9 @@ const NavBar = () => {
         console.error("Error al cargar las categorías:", error);
       }
     };
-  
+
     fetchCategories();
   }, []);
-  
 
   return (
     <nav className="bg-zinc-800">
@@ -66,6 +70,9 @@ const NavBar = () => {
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             <CartWidget />
+            <span className="text-amber-400 font-medium px-3">
+              Carrito: {totalItems} productos
+            </span>
             <div>
               <Prueba />
             </div>
