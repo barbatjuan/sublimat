@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import "./ItemListContainer.css";
-import Loader from "../Loader/Loader";  // Importamos el Loader mejorado
+import Loader from "../Loader/Loader";  
 import { db } from "../../services/firebase";
 import { collection, getDocs, query, where } from "firebase/firestore";
 
 const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);  // Estado para controlar el loader
+  const [loading, setLoading] = useState(true);  
   const { id } = useParams();
 
   useEffect(() => {
@@ -28,9 +28,9 @@ const ItemListContainer = () => {
         } catch (error) {
           console.log(error);
         } finally {
-          setLoading(false); // Cambiar el estado de loading a false después de la simulación
+          setLoading(false); 
         }
-      }, 1500);  // Retraso de 1500ms
+      }, 1500); 
     };
 
     fetchProducts();
