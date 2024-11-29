@@ -5,6 +5,7 @@ import "./styles.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ItemDetail from "./Components/ItemDetail/ItemDetail";
 import { CartProvider } from "./context/CartContext";
+import Checkout from "./Components/Checkout/Checkout"; 
 
 function App() {
   return (
@@ -12,6 +13,8 @@ function App() {
       <BrowserRouter>
         <NavBar />
         <Routes>
+        <Route path="/checkout" element={<Checkout />} />
+
           <Route path="/" element={<ItemListContainer />} />
           <Route path="/category/:id" element={<ItemListContainer />} />
           <Route path="/item/:id" element={<ItemDetail />} />

@@ -1,0 +1,27 @@
+.custom-popup {
+    background: linear-gradient(135deg, #494141, #232323);
+    border: 2px solid #303030; 
+    border-radius: 15px; 
+    color: #a8a8a8; 
+  }
+  
+  .custom-title {
+    color: #a99d5f; 
+    font-size: 24px;
+    font-weight: bold; 
+  }
+  
+  .custom-button {
+    background-color: #de5a5a; 
+    color: #fff; 
+    border-radius: 10px; 
+    padding: 10px 20px; 
+    font-size: 16px;
+    font-weight: bold; 
+    transition: background-color 0.3s ease; 
+  }
+  
+  .custom-button:hover {
+    background-color: #bd4a4a; 
+  }
+  

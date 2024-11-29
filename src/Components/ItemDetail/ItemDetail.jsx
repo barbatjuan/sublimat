@@ -25,7 +25,7 @@ const ItemDetail = () => {
           console.log("No se encuentra el producto!");
         }
       } catch (error) {
-        console.error("Error getting document:", error);
+        console.error("Error:", error);
       } finally {
         setLoading(false); 
       }
