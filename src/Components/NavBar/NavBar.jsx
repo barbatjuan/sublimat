@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import CartWidget from "../CartWidget/CartWidget";
-import Prueba from "../Prueba/Prueba";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../services/firebase";
 import { useCart } from "../../context/CartContext"; 
@@ -13,7 +12,6 @@ const NavBar = () => {
 
   const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
   
-  // Estado para controlar la apertura del menú hamburguesa
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
@@ -37,12 +35,11 @@ const NavBar = () => {
   }, []);
 
   return (
-    <nav className="bg-zinc-800">
+    <nav className="bg-zinc-800 w-full">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-        <div className="relative flex h-16 items-center justify-between">
+        <div className="relative flex items-center justify-between h-16 w-full">
           
-          {/* Logo centrado */}
-          <div className="flex items-center justify-center flex-1">
+          <div className="flex items-center justify-center flex-grow">
             <Link to="/">
               <img
                 className="h-8 w-auto"
@@ -52,42 +49,32 @@ const NavBar = () => {
             </Link>
           </div>
 
-          {/* Menú centrado (flex-1 ya asegura que el menú se centra) */}
-          <div className="flex-1 flex justify-start">
-            <div className="hidden sm:block">
-              <div className="flex space-x-4">
-                <Link
-                  to="/"
-                  className="rounded-md bg-zinc-900 px-3 py-2 text-sm font-medium text-amber-400 hover:text-amber-200"
-                  aria-current="page"
-                >
-                  Home
-                </Link>
-                {categories.map((category) => (
-                  <Link
-                    key={category}
-                    to={`/category/${category}`}
-                    className="rounded-md px-3 py-2 text-sm font-medium text-amber-400 hover:bg-zinc-700 hover:text-amber-200"
-                  >
-                    {category.charAt(0).toUpperCase() + category.slice(1)}
-                  </Link>
-                ))}
-              </div>
-            </div>
+          <div className="hidden sm:flex sm:ml-auto space-x-4 flex-grow justify-center">
+            <Link
+              to="/"
+              className="rounded-md bg-zinc-900 px-3 py-2 text-sm font-medium text-amber-400 hover:text-amber-200"
+              aria-current="page"
+            >
+              Home
+            </Link>
+            {categories.map((category) => (
+              <Link
+                key={category}
+                to={`/category/${category}`}
+                className="rounded-md px-3 py-2 text-sm font-medium text-amber-400 hover:bg-zinc-700 hover:text-amber-200"
+              >
+                {category.charAt(0).toUpperCase() + category.slice(1)}
+              </Link>
+            ))}
           </div>
 
-          {/* Icono del carrito y otras opciones a la derecha */}
-          <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+          <div className="absolute right-0 flex items-center pr-4 sm:static sm:ml-6 sm:pr-4">
             <CartWidget />
-            <span className="text-amber-400 font-medium px-3">
+            <span className="text-amber-400 font-medium px-2">
               {totalItems}
             </span>
-            <div>
-              <Prueba />
-            </div>
           </div>
 
-          {/* Icono del menú hamburguesa alineado a la izquierda */}
           <div className="sm:hidden absolute left-4 top-3">
             <button
               onClick={toggleMenu}
@@ -113,7 +100,6 @@ const NavBar = () => {
         </div>
       </div>
 
-      {/* Menú móvil centrado */}
       <div
         className={`${
           isMenuOpen ? "block" : "hidden"
