@@ -1,0 +1,110 @@
+/* Estilos generales para la página de éxito */
+.success-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Título principal */
+  .success-container h2 {
+    font-size: 2rem;
+    color: #373737;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 800;
+  }
+  
+  /* Mensaje de agradecimiento */
+  .success-container p {
+    font-size: 1rem;
+    color: #34495e;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  
+  /* Detalles del pedido */
+  .success-container ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .success-container ul li {
+    background-color: #3c3c3c;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    color: #2c3e50;
+  }
+  
+  .success-container ul li strong {
+    font-size: 1.1rem;
+    color: #e8ae10;
+    display: block;
+    margin-bottom: 5px;
+    text-align: center;
+  }
+  
+  .success-container ul li span {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.9rem;
+    color: #dce0bf;
+    text-align: center;
+
+  }
+  
+  .success-container ul li:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* Estilo para la lista de productos */
+  .success-container ul li .product-details {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #eceacb;
+    text-align: center;
+  }
+  
+  .success-container ul li .product-details span {
+    font-weight: bold;
+    color: #ffffff;
+  }
+  
+  /* Enlaces o botones de acción (si los agregas en el futuro) */
+  .success-container a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #2980b9;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+  
+  .success-container a:hover {
+    background-color: #3498db;
+  }
+  
+  /* Estilos de carga */
+  .success-container .loading {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #7f8c8d;
+  }
+  
+  /* Estilo para los errores */
+  .error-message {
+    color: red;
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 20px;
+  }
+  

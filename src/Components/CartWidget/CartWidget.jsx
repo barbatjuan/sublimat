@@ -1,11 +1,11 @@
-// CartWidget.jsx
+
 import React from "react";
-import { Link } from "react-router-dom"; // Importa Link para navegación
+import { Link } from "react-router-dom"; 
 import "./CartWidget.css";
 
 const CartWidget = () => {
   return (
-    <Link to="/cartdetail" className="nav-link-custom"> {/* Usamos Link para redirigir */}
+    <Link to="/cartdetail" className="nav-link-custom"> 
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="20"

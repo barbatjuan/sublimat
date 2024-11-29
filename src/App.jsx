@@ -7,6 +7,7 @@ import ItemDetail from "./Components/ItemDetail/ItemDetail";
 import CartDetail from "./Components/CartDetail/CartDetail"; 
 import Checkout from "./Components/Checkout/Checkout";
 import { CartProvider } from "./context/CartContext"; 
+import Success from "./Components/Success/Success"; 
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/item/:id" element={<ItemDetail />} />
           <Route path="/cartdetail" element={<CartDetail />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/success/:orderId" element={<Success />} />
           </Routes>
       </BrowserRouter>
     </CartProvider>

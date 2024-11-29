@@ -1,0 +1,190 @@
+
+
+.checkout-container-form {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #2c3e50; 
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+  font-family: 'Arial', sans-serif;
+  color: #ecf0f1; 
+}
+
+.checkout-title-form {
+  font-size: 2rem;
+  color: #f39c12; 
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 800;
+}
+
+.checkout-form-details {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group-detail {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group-detail label {
+  font-size: 1rem;
+  color: #f39c12; 
+  margin-bottom: 5px;
+}
+
+.form-group-detail input {
+  padding: 10px;
+  font-size: 1rem;
+  color: #34495e;
+  background-color: #34495e; 
+  border: 1px solid #7f8c8d; 
+  border-radius: 5px;
+  transition: border-color 0.3s;
+}
+
+.form-group-detail input:focus {
+  border-color: #f39c12; 
+  outline: none;
+}
+
+.error-message-form {
+  color: #e74c3c; 
+  text-align: center;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+.checkout-summary-form {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.total-price-form {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #ecf0f1; 
+}
+
+.total-price-form span {
+  color: #f39c12; 
+}
+
+.btn-submit-form {
+  padding: 12px 20px;
+  font-size: 1.2rem;
+  background-color: #f39c12; 
+  color: #2c3e50; 
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.btn-submit-form:hover {
+  background-color: #e67e22; 
+}
+
+.checkout-container-form .loading {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #7f8c8d; 
+}
+
+.checkout-container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #292929;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  font-family: 'Arial', sans-serif;
+  color: #ecf0f1; 
+}
+
+.checkout-title {
+  font-size: 2rem;
+  color: #f0ece5; 
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 1.1rem;
+  color: #f39c12; 
+}
+
+.form-input {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #828282; 
+  border-radius: 4px;
+  background-color: #3f4144; 
+  color: #ecf0f1; 
+}
+
+.form-input:focus {
+  border-color: #f39c12;
+  outline: none;
+  box-shadow: 0 0 4px rgba(243, 156, 18, 0.5); 
+}
+
+.error-message {
+  color: #e74c3c; 
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: -10px;
+}
+
+.checkout-summary {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.total-price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ecf0f1; 
+}
+
+.total-price span {
+  color: #f39c12; 
+}
+
+.btn-submit {
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  background-color: #f39c12; 
+  color: #2c3e50; 
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+  background-color: #e67e22;
+}
+
+.btn-submit:disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+}
+
+

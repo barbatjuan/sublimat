@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useCart } from "../../context/CartContext"; 
 import { useNavigate } from "react-router-dom";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, doc, updateDoc } from "firebase/firestore";
 import { db } from "../../services/firebase";
+import Loader from "../Loader/Loader"; 
 import "./Checkout.css";
 
 const Checkout = () => {
@@ -17,22 +18,19 @@ const Checkout = () => {
   });
 
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false); 
 
-  // Calcula el precio total
   const getTotalPrice = () => {
     return cart.reduce((acc, product) => acc + product.price * product.quantity, 0);
   };
 
-  // Maneja el cambio de los campos del formulario
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Envía los datos a Firestore
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validar que todos los campos estén completos
     if (!formData.name || !formData.email || !formData.address || !formData.phone) {
       setError("Por favor, completa todos los campos.");
       return;
@@ -45,17 +43,35 @@ const Checkout = () => {
       date: new Date().toISOString(),
     };
 
+    setIsLoading(true); 
+
     try {
-      // Agregar la orden a Firestore
+      // Crear la orden en la colección "orders"
       const docRef = await addDoc(collection(db, "orders"), order);
       console.log("Orden registrada con ID:", docRef.id);
 
-      // Vaciar el carrito y redirigir
+      // Actualizar el stock de los productos comprados
+      for (const product of cart) {
+        const productRef = doc(db, "products", product.id); // Referencia al producto
+        const newStock = product.stock - product.quantity; // Disminuir el stock
+
+        await updateDoc(productRef, {
+          stock: newStock, // Actualizamos el stock del producto
+        });
+        console.log(`Stock del producto ${product.name} actualizado a ${newStock}`);
+      }
+
+      // Limpiar el carrito después de realizar la compra
       clearCart();
-      navigate(`/success/${docRef.id}`); // Redirige a una página de éxito con el ID
+      
+      // Redirigir al usuario a la página de éxito con el ID de la orden
+      navigate(`/success/${docRef.id}`); 
+
     } catch (err) {
       console.error("Error al registrar la orden:", err);
       setError("Ocurrió un error al procesar tu compra. Inténtalo nuevamente.");
+    } finally {
+      setIsLoading(false); 
     }
   };
 
@@ -73,6 +89,7 @@ const Checkout = () => {
             value={formData.name}
             onChange={handleChange}
             placeholder="Escribe tu nombre"
+            className="form-input"
           />
         </div>
 
@@ -85,6 +102,7 @@ const Checkout = () => {
             value={formData.email}
             onChange={handleChange}
             placeholder="Escribe tu correo"
+            className="form-input"
           />
         </div>
 
@@ -97,6 +115,7 @@ const Checkout = () => {
             value={formData.address}
             onChange={handleChange}
             placeholder="Escribe tu dirección"
+            className="form-input"
           />
         </div>
 
@@ -109,6 +128,7 @@ const Checkout = () => {
             value={formData.phone}
             onChange={handleChange}
             placeholder="Escribe tu teléfono"
+            className="form-input"
           />
         </div>
 
@@ -120,7 +140,11 @@ const Checkout = () => {
           </p>
         </div>
 
-        <button type="submit" className="btn-submit">Confirmar compra</button>
+        {isLoading ? (
+          <Loader /> 
+        ) : (
+          <button type="submit" className="btn-submit">Confirmar compra</button>
+        )}
       </form>
     </div>
   );
