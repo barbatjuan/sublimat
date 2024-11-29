@@ -5,7 +5,7 @@ import "./CartWidget.css";
 
 const CartWidget = () => {
   return (
-    <Link to="/checkout" className="nav-link-custom"> {/* Usamos Link para redirigir */}
+    <Link to="/cartdetail" className="nav-link-custom"> {/* Usamos Link para redirigir */}
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="20"

@@ -11,7 +11,6 @@ const ItemListContainer = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    // Simulamos un retraso de 1500ms
     const fetchProducts = async () => {
       setTimeout(async () => {
         const collectionRef = id
@@ -39,7 +38,7 @@ const ItemListContainer = () => {
   return (
     <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
       {loading ? (
-        <Loader />  // Mostrar el loader mientras se cargan los productos
+        <Loader />  
       ) : (
         products.map((product) => (
           <div

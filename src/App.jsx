@@ -4,8 +4,9 @@ import NavBar from "./Components/NavBar/NavBar";
 import "./styles.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ItemDetail from "./Components/ItemDetail/ItemDetail";
-import { CartProvider } from "./context/CartContext";
-import Checkout from "./Components/Checkout/Checkout"; 
+import CartDetail from "./Components/CartDetail/CartDetail"; 
+import Checkout from "./Components/Checkout/Checkout";
+import { CartProvider } from "./context/CartContext"; 
 
 function App() {
   return (
@@ -13,12 +14,12 @@ function App() {
       <BrowserRouter>
         <NavBar />
         <Routes>
-        <Route path="/checkout" element={<Checkout />} />
-
           <Route path="/" element={<ItemListContainer />} />
           <Route path="/category/:id" element={<ItemListContainer />} />
           <Route path="/item/:id" element={<ItemDetail />} />
-        </Routes>
+          <Route path="/cartdetail" element={<CartDetail />} />
+          <Route path="/checkout" element={<Checkout />} />
+          </Routes>
       </BrowserRouter>
     </CartProvider>
   );
