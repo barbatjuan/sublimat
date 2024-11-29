@@ -40,7 +40,7 @@ const NavBar = () => {
               <Link to="/">
                 <img
                   className="h-8 w-auto"
-                  src="/src/assets/sublimate-mini.png"
+                  src="https://www.sublimat.uy/wp-content/uploads/2024/10/sublimate-mini.png"
                   alt="Logo Sublimat"
                 />
               </Link>
