@@ -46,25 +46,21 @@ const Checkout = () => {
     setIsLoading(true); 
 
     try {
-      // Crear la orden en la colección "orders"
       const docRef = await addDoc(collection(db, "orders"), order);
       console.log("Orden registrada con ID:", docRef.id);
 
-      // Actualizar el stock de los productos comprados
       for (const product of cart) {
-        const productRef = doc(db, "products", product.id); // Referencia al producto
-        const newStock = product.stock - product.quantity; // Disminuir el stock
+        const productRef = doc(db, "products", product.id); 
+        const newStock = product.stock - product.quantity; 
 
         await updateDoc(productRef, {
-          stock: newStock, // Actualizamos el stock del producto
+          stock: newStock, 
         });
         console.log(`Stock del producto ${product.name} actualizado a ${newStock}`);
       }
 
-      // Limpiar el carrito después de realizar la compra
       clearCart();
       
-      // Redirigir al usuario a la página de éxito con el ID de la orden
       navigate(`/success/${docRef.id}`); 
 
     } catch (err) {

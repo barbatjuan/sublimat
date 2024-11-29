@@ -11,7 +11,7 @@ const Success = () => {
 
   useEffect(() => {
     const fetchOrder = async () => {
-      const docRef = doc(db, "orders", orderId); // Buscar la orden por el ID
+      const docRef = doc(db, "orders", orderId); 
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
@@ -32,8 +32,7 @@ const Success = () => {
     return <div>Cargando...</div>;
   }
 
-  // Verificar si `order.cart` existe antes de usar map
-  const cartItems = order.items || [];  // Si `cart` no existe, usamos un arreglo vacío
+  const cartItems = order.items || []; 
 
   return (
     <div className="success-container">

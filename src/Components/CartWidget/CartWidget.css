@@ -1,7 +1,7 @@
 .nav-link-custom {
-  color: rgb(201, 158, 103) !important; /* Aplica el color deseado */
+  color: rgb(201, 158, 103) !important;
   margin: 0 10px 0 10px;
 }
 .nav-link-customimg {
-  filter: invert(1); /* Cambia el color del logo si es un SVG blanco */
+  filter: invert(1); 
 }

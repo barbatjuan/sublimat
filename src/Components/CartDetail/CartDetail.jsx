@@ -12,7 +12,7 @@ const CartDetail = () => {
   };
 
   const handleCheckout = () => {
-    navigate("/checkout"); // Redirige al componente Checkout
+    navigate("/checkout"); 
   };
 
   return (
