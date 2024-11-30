@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import CartWidget from "../CartWidget/CartWidget";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../services/firebase";
@@ -9,9 +9,9 @@ import "./NavBar.css";
 const NavBar = () => {
   const [categories, setCategories] = useState([]);
   const { cart } = useCart(); 
-
+  const location = useLocation(); // Obtiene la ubicación actual
   const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-  
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
@@ -50,10 +50,15 @@ const NavBar = () => {
           </div>
 
           <div className="hidden sm:flex sm:ml-auto space-x-4 flex-grow justify-center">
+            {/* Verifica si la ruta actual es '/' para marcar como current */}
             <Link
               to="/"
-              className="rounded-md bg-zinc-900 px-3 py-2 text-sm font-medium text-amber-400 hover:text-amber-200"
-              aria-current="page"
+              className={`rounded-md px-3 py-2 text-sm font-medium ${
+                location.pathname === "/"
+                  ? "bg-zinc-900 text-amber-400"
+                  : "text-amber-400 hover:text-amber-200"
+              }`}
+              aria-current={location.pathname === "/" ? "page" : undefined}
             >
               Home
             </Link>
@@ -61,7 +66,14 @@ const NavBar = () => {
               <Link
                 key={category}
                 to={`/category/${category}`}
-                className="rounded-md px-3 py-2 text-sm font-medium text-amber-400 hover:bg-zinc-700 hover:text-amber-200"
+                className={`rounded-md px-3 py-2 text-sm font-medium ${
+                  location.pathname === `/category/${category}`
+                    ? "bg-zinc-900 text-amber-400"
+                    : "text-amber-400 hover:bg-zinc-700 hover:text-amber-200"
+                }`}
+                aria-current={
+                  location.pathname === `/category/${category}` ? "page" : undefined
+                }
               >
                 {category.charAt(0).toUpperCase() + category.slice(1)}
               </Link>
@@ -108,8 +120,12 @@ const NavBar = () => {
       >
         <Link
           to="/"
-          className="block rounded-md bg-zinc-900 px-3 py-2 text-base font-medium text-white"
-          aria-current="page"
+          className={`block rounded-md px-3 py-2 text-base font-medium ${
+            location.pathname === "/"
+              ? "bg-zinc-900 text-white"
+              : "text-amber-300 hover:bg-zinc-700 hover:text-white"
+          }`}
+          aria-current={location.pathname === "/" ? "page" : undefined}
         >
           Inicio
         </Link>
@@ -117,7 +133,14 @@ const NavBar = () => {
           <Link
             key={category}
             to={`/category/${category}`}
-            className="block rounded-md px-3 py-2 text-base font-medium text-amber-300 hover:bg-zinc-700 hover:text-white"
+            className={`block rounded-md px-3 py-2 text-base font-medium ${
+              location.pathname === `/category/${category}`
+                ? "bg-zinc-900 text-white"
+                : "text-amber-300 hover:bg-zinc-700 hover:text-white"
+            }`}
+            aria-current={
+              location.pathname === `/category/${category}` ? "page" : undefined
+            }
           >
             {category.charAt(0).toUpperCase() + category.slice(1)}
           </Link>

@@ -56,7 +56,7 @@ const ItemListContainer = () => {
               </h3>
               <p className="text-gray-700 mt-2">{product.description}</p>
               <div className="card-footer flex justify-between items-center mt-4">
-                <span className="text-gray-900 font-semibold">
+                <span className="text-gray-900 font-bold text-2xl">
                   ${product.price}
                 </span>
                 <div className="flex gap-2">
